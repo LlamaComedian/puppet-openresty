@@ -13,5 +13,8 @@ class openresty::package inherits openresty::params {
     ensure  => "${openresty_version}",
     require => Yumrepo['OpenRestyRepository'];
   }
-
+  ->
+  yum::versionlock { "${openresty_version}":
+    ensure => present,
+  }
 }
